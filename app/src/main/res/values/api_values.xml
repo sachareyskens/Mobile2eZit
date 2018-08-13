@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="url">https://api.themoviedb.org/3/search/movie</string>
+    <string name="key">112b449b192d9449b0e7b19ff270c63c</string>
+</resources>

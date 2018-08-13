@@ -1,0 +1,153 @@
+<ScrollView android:layout_width="wrap_content" android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="pxl.be.cinemaapp.activities.DetailActivity">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="116dp"
+
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/title_label"
+            app:srcCompat="@drawable/example_appwidget_preview" />
+
+        <TextView
+            android:id="@+id/vote_average__label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/imageView"
+            android:layout_marginTop="20dp"
+            android:text="Vote Average:" />
+
+        <TextView
+            android:id="@+id/title_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/id_label"
+            android:text="Title"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/lang_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/genres"
+            android:layout_alignStart="@+id/genres"
+            android:layout_below="@+id/genres_tv"
+            android:layout_marginTop="17dp"
+            android:text="Origional Language:" />
+
+        <TextView
+            android:id="@+id/genres"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/vote_average_tv"
+            android:layout_alignBottom="@+id/vote_average_tv"
+            android:layout_marginLeft="120dp"
+            android:layout_marginStart="120dp"
+            android:layout_toEndOf="@+id/vote_average_tv"
+            android:layout_toRightOf="@+id/vote_average_tv"
+            android:text="Genres:" />
+
+        <TextView
+            android:id="@+id/release_date_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/lang_label"
+            android:layout_alignBottom="@+id/lang_label"
+            android:layout_toEndOf="@+id/id_tv"
+            android:layout_toLeftOf="@+id/id_tv"
+            android:layout_toRightOf="@+id/id_tv"
+            android:text="Release:" />
+
+        <TextView
+            android:id="@+id/overview_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/followed_switch"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:id="@+id/vote_average_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/vote_average__label"
+            android:layout_alignBottom="@+id/vote_average__label"
+            android:layout_toEndOf="@+id/vote_average__label"
+            android:layout_toRightOf="@+id/vote_average__label" />
+
+        <TextView
+            android:id="@+id/origional_content_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/lang_label"
+            android:layout_alignBottom="@+id/lang_label"
+            android:layout_toEndOf="@+id/lang_label"
+            android:layout_toRightOf="@+id/lang_label" />
+
+        <TextView
+            android:id="@+id/release_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/release_date_label"
+            android:layout_alignBottom="@+id/release_date_label"
+            android:layout_toEndOf="@+id/release_date_label"
+            android:layout_toRightOf="@+id/release_date_label" />
+
+        <TextView
+            android:id="@+id/genres_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/genres"
+            android:layout_alignBottom="@+id/genres"
+            android:layout_toEndOf="@+id/genres"
+            android:layout_toRightOf="@+id/genres" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/vote_average_tv"
+            android:layout_toEndOf="@+id/vote_average_tv"
+            android:layout_toRightOf="@+id/vote_average_tv"
+            android:paddingLeft="5dp" />
+
+        <!-- TODO: Make switch add movie to cashe -->
+        <Switch
+            android:id="@+id/followed_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/release_date_label"
+            android:layout_marginTop="15dp"
+            android:text="Follow" />
+
+        <com.facebook.share.widget.ShareButton
+            android:contentDescription="@string/share"
+            android:id="@+id/share_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/followed_switch"
+            android:layout_alignBottom="@+id/followed_switch"
+            android:layout_alignLeft="@+id/lang_label"
+            android:layout_alignStart="@+id/lang_label" />
+    </RelativeLayout>
+</ScrollView>

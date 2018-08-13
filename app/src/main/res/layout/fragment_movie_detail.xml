@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="143dp"
+            android:layout_height="116dp"
+
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/title_label" />
+
+        <TextView
+            android:id="@+id/vote_count_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/popularity_label"
+            android:layout_marginTop="15dp"
+            android:text="Vote Count:" />
+
+        <TextView
+            android:id="@+id/id_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="Movie ID:" />
+
+        <TextView
+            android:id="@+id/vote_average__label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/imageView"
+            android:layout_marginTop="15dp"
+            android:text="Vote Average:" />
+
+        <TextView
+            android:id="@+id/title_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/id_label"
+            android:layout_marginTop="13dp"
+            android:text="Title"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/popularity_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/lang_label"
+            android:layout_marginTop="15dp"
+            android:text="Popularity:" />
+
+        <TextView
+            android:id="@+id/lang_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/vote_average__label"
+            android:layout_marginTop="15dp"
+            android:text="Origional Language:" />
+
+        <TextView
+            android:id="@+id/genres"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/adult_label"
+            android:layout_marginTop="15dp"
+            android:text="Genres:" />
+
+        <TextView
+            android:id="@+id/adult_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/release_date_label"
+            android:layout_marginTop="15dp"
+            android:text="Adult:" />
+
+        <TextView
+            android:id="@+id/overview_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/imageView"
+
+
+            android:layout_toEndOf="@+id/imageView"
+            android:layout_toRightOf="@+id/imageView"
+            android:text="Overview:" />
+
+        <TextView
+            android:id="@+id/release_date_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/vote_count_label"
+            android:layout_marginTop="15dp"
+            android:text="Release:" />
+
+        <TextView
+            android:id="@+id/overview_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imageView"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/overview_label"
+            android:layout_toRightOf="@+id/imageView" />
+
+        <TextView
+            android:id="@+id/id_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/lang_label"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/lang_label" />
+
+        <TextView
+            android:id="@+id/vote_average_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/vote_average__label"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@+id/vote_count_label"
+            android:layout_toRightOf="@+id/vote_count_label" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/vote_average__label"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@+id/vote_count_label"
+            android:layout_toRightOf="@+id/vote_count_label" />
+
+        <TextView
+            android:id="@+id/origional_content_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/lang_label"
+            android:layout_toEndOf="@+id/id_tv"
+            android:layout_toRightOf="@+id/id_tv" />
+
+        <TextView
+            android:id="@+id/popularity_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/popularity_label"
+            android:layout_toEndOf="@+id/popularity_label"
+            android:layout_toRightOf="@+id/popularity_label" />
+
+        <TextView
+            android:id="@+id/release_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/release_date_label"
+            android:layout_toEndOf="@+id/id_label"
+            android:layout_toRightOf="@+id/id_label" />
+
+        <TextView
+            android:id="@+id/vote_count_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/vote_count_label"
+            android:layout_toEndOf="@+id/popularity_tv"
+            android:layout_toRightOf="@+id/popularity_tv" />
+
+        <TextView
+            android:id="@+id/adult_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/adult_label"
+            android:layout_toEndOf="@+id/adult_label"
+            android:layout_toRightOf="@+id/adult_label" />
+
+        <TextView
+            android:id="@+id/genres_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/genres"
+            android:layout_alignBottom="@+id/genres"
+            android:layout_toEndOf="@+id/genres"
+            android:layout_toRightOf="@+id/genres" />
+
+        <Button
+            android:id="@+id/follow_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </RelativeLayout>
+</ScrollView>

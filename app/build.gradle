@@ -1,0 +1,78 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "pxl.be.cinemaapp"
+        minSdkVersion 25
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile files('libs/YouTubeAndroidPlayerApi.jar')
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.0.1'
+    compile 'org.apache.directory.studio:org.apache.commons.lang:2.6'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.mcxiaoke.volley:library:1.0.19'
+    compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.facebook.android:facebook-android-sdk:4.27.0'
+    compile 'com.google.apis:google-api-services-youtube:v3-rev187-1.23.0'
+    compile 'com.facebook.android:facebook-login:[4,5)'
+    compile 'com.facebook.android:facebook-share:[4,5)'
+    testImplementation 'junit:junit:4.12'
+}
+android {
+    configurations.all {
+        resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+    }
+}
+
+android.applicationVariants.all { variant ->
+    task "fix${variant.name.capitalize()}MainDexClassList" << {
+        logger.info "Fixing main dex keep file for $variant.name"
+        File keepFile = new File("$buildDir/intermediates/multi-dex/$variant.buildType.name/maindexlist.txt")
+        keepFile.withWriterAppend { w ->
+
+            w.append('\n')
+            new File("${projectDir}/multidex.keep").withReader { r ->
+
+                w << r << '\n'
+            }
+            logger.info "Updated main dex keep file for ${keepFile.getAbsolutePath()}\n$keepFile.text"
+        }
+    }
+}
+tasks.whenTaskAdded { task ->
+    android.applicationVariants.all { variant ->
+        if (task.name == "create${variant.name.capitalize()}MainDexClassList") {
+            task.finalizedBy "fix${variant.name.capitalize()}MainDexClassList"
+        }
+    }
+}
