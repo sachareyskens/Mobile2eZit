@@ -1,4 +1,5 @@
 package pxl.be.cinemaapp.activities;
+import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -6,7 +7,9 @@ import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -53,13 +56,32 @@ public class DetailActivity extends YouTubeBaseActivity
     private Bitmap image;
     private int counter = 0;
     private ObjectMapper mapper = new ObjectMapper();
-
     private static final String PREFS_NAME = "prefs";
     private static final String PREF_DARK_THEME = "dark_theme";
+
+    private TextView label;
+    private TextView overview_tv;
+    private ImageView image_view;
+    private RatingBar rating_bar;
+    private TextView content_tv;
+    private TextView release_tv;
+    private TextView genres_tv;
+    private Switch followed_switch;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // Code cleanup requested by Servaas Tilkin
+        label = ((TextView) findViewById(R.id.title_label));
+        overview_tv = ((TextView) findViewById(R.id.overview_tv));
+        image_view = ((ImageView) findViewById(R.id.imageView));
+        rating_bar = ((RatingBar) findViewById(R.id.ratingBar));
+        content_tv = ((TextView) findViewById(R.id.origional_content_tv));
+        release_tv = ((TextView) findViewById(R.id.release_tv));
+        genres_tv = ((TextView) findViewById(R.id.genres_tv));
+        followed_switch = ((Switch) findViewById(R.id.followed_switch));
+
         SharedPreferences preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         boolean useDarkTheme = preferences.getBoolean(PREF_DARK_THEME, false);
 
@@ -142,15 +164,15 @@ public class DetailActivity extends YouTubeBaseActivity
         return youTubeView;
     }
 
-    private void setValues() {
-        ((TextView) findViewById(R.id.title_label)).setText(" " + movie.getOriginalTitle());
-        ((TextView) findViewById(R.id.overview_tv)).setText(movie.getOverview());
-        ((ImageView) findViewById(R.id.imageView)).setImageBitmap(movie.getPoster());
-        ((RatingBar) findViewById(R.id.ratingBar)).setRating((float) (movie.getVoteAverage() / 2));
-        ((TextView) findViewById(R.id.origional_content_tv)).setText(movie.getOriginalLanguage().toUpperCase());
-        ((TextView) findViewById(R.id.release_tv)).setText(movie.getReleaseDate());
-        ((TextView) findViewById(R.id.genres_tv)).setText(movie.getGenresString());
-        ((Switch) findViewById(R.id.followed_switch)).setChecked(movie.isCached());
+    public void setValues() {
+        label.setText(" " + movie.getOriginalTitle());
+        overview_tv.setText(movie.getOverview());
+        image_view.setImageBitmap(movie.getPoster());
+        rating_bar.setRating((float) (movie.getVoteAverage() / 2));
+        content_tv.setText(movie.getOriginalLanguage().toUpperCase());
+        release_tv.setText(movie.getReleaseDate());
+        genres_tv.setText(movie.getGenresString());
+        followed_switch.setChecked(movie.isCached());
     }
 
 
@@ -256,7 +278,7 @@ public class DetailActivity extends YouTubeBaseActivity
 
     }
 
-    private void setCachedMovies() {
+    public void setCachedMovies() {
         CachedMoviesDbAdapter dbAdapter = new CachedMoviesDbAdapter(DetailActivity.this);
         List<Movie> movies = dbAdapter.getData();
         for (Movie m : movies) {

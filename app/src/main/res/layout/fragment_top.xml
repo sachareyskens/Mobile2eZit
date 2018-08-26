@@ -34,7 +34,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-
+        android:background="@android:color/transparent"
         android:onClick="nextPage"
         android:text="@string/button_next"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -51,6 +51,7 @@
         android:layout_alignParentStart="true"
         android:onClick="prevPage"
         android:text="@string/button_back"
+        android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintTop_creator="1"

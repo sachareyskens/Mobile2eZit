@@ -23,7 +23,7 @@
         android:layout_below="@+id/logo_image_view"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="14dp" />
+        android:layout_marginTop="30dp" />
 
 
     <Button
@@ -37,7 +37,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="15dp"
-        android:backgroundTint="@android:color/holo_green_dark"
+        android:backgroundTint="@android:color/holo_orange_dark"
         android:onClick="goToTopMovies"
         android:text="@string/button_top_movies" />
 
@@ -52,7 +52,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="15dp"
-        android:backgroundTint="@android:color/holo_green_dark"
+        android:backgroundTint="@android:color/holo_orange_dark"
         android:onClick="goToSearch"
         android:text="@string/button_search" />
 
@@ -67,7 +67,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="15dp"
-        android:backgroundTint="@android:color/holo_green_dark"
+        android:backgroundTint="@android:color/holo_orange_dark"
         android:onClick="goToUpcoming"
         android:text="@string/button_upcoming" />
 
@@ -82,7 +82,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="15dp"
-        android:backgroundTint="@android:color/holo_green_dark"
+        android:backgroundTint="@android:color/holo_orange_dark"
         android:onClick="goToSettings"
         android:text="@string/button_settings" />
 
@@ -97,7 +97,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="15dp"
-        android:backgroundTint="@android:color/holo_green_dark"
+        android:backgroundTint="@android:color/holo_orange_dark"
         android:onClick="goToFollowed"
         android:text="Following Movies" />
 
