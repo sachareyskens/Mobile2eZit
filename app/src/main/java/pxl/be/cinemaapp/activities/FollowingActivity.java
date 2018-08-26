@@ -54,34 +54,7 @@ public class FollowingActivity extends AppCompatActivity {
         movies = new ArrayList<>();
 
 
-        new GetGenresFromApi(){
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-                // Showing progress dialog
-                progressDialog = new ProgressDialog(FollowingActivity.this);
-                progressDialog.setMessage("Please wait...");
-                progressDialog.setCancelable(true);
-                progressDialog.show();
-                movies.clear();
-            }
-
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
-                if (progressDialog.isShowing())
-                    progressDialog.dismiss();
-                CachedMoviesDbAdapter dbAdapter = new CachedMoviesDbAdapter(FollowingActivity.this);
-                movies = dbAdapter.getData();
-                Log.e(TAG, "movies size: " + movies.size());
-                adapter = new CustomAdapter(FollowingActivity.this, movies);
-                RecyclerView recyclerView = (RecyclerView) findViewById(R.id.movie_list);
-                setupRecyclerView(recyclerView);
-                for(Movie m : movies){
-                    Log.e("FollowingActivity", "Cached Movies Title: " + m.getTitle());
-                }
-            }
-        }.execute();
+        new FollowingGenresGrabber() {}.execute();
 
         if (findViewById(R.id.movie_detail_container) != null) {
             mTwoPane = true;
@@ -91,6 +64,40 @@ public class FollowingActivity extends AppCompatActivity {
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         Log.e(TAG, "setupRecyclerView is called");
         recyclerView.setAdapter(new CustomAdapter(this, movies));
+    }
+
+    private class FollowingGenresGrabber extends GetGenresFromApi {
+        public FollowingGenresGrabber() {
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // Showing progress dialog
+            progressDialog = new ProgressDialog(FollowingActivity.this);
+            progressDialog.setMessage("Please wait...");
+            progressDialog.setCancelable(true);
+            progressDialog.show();
+            movies.clear();
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            if (progressDialog.isShowing())
+                progressDialog.dismiss();
+            CachedMoviesDbAdapter dbAdapter = new CachedMoviesDbAdapter(FollowingActivity.this);
+            movies = dbAdapter.getData();
+            Log.e(TAG, "movies size: " + movies.size());
+            adapter = new CustomAdapter(FollowingActivity.this, movies);
+            RecyclerView recyclerView = (RecyclerView) findViewById(R.id.movie_list);
+            setupRecyclerView(recyclerView);
+            for(Movie m : movies){
+                Log.e("FollowingActivity", "Cached Movies Title: " + m.getTitle());
+            }
+        }
+
     }
 
     private class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder>{

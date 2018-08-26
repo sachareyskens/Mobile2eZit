@@ -92,39 +92,45 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        new GetGenresFromApi(){
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
-                CachedMoviesDbAdapter dbAdapter = new CachedMoviesDbAdapter(MainActivity.this);
-                List<Movie> movieList = new ArrayList<>();
-                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                movieList = dbAdapter.getData();
-                for (Movie m : movieList) {
-                    try {
-                        Date date = format.parse(m.getReleaseDate());
-                        if (date == new Date()) {
-                            Notification n = new Notification.Builder(getApplicationContext())
-                                    .setContentTitle("Cinema App: A movie you followed has been released")
-                                    .setContentText(m.getTitle())
-                                    .setSmallIcon(R.drawable.logo)
-                                    .build();
-                            NotificationManager mNotificationManager =
-                                    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                            mNotificationManager.notify(m.getId(), n);
-
-                        }
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-
-                }
-            }
-        }.execute();
+        new MainGenreGrabber(){}.execute();
 
 
     }
 
+    private class MainGenreGrabber extends GetGenresFromApi {
+        public MainGenreGrabber() {
+
+        }
+
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            CachedMoviesDbAdapter dbAdapter = new CachedMoviesDbAdapter(MainActivity.this);
+            List<Movie> movieList = new ArrayList<>();
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            movieList = dbAdapter.getData();
+            for (Movie m : movieList) {
+                try {
+                    Date date = format.parse(m.getReleaseDate());
+                    if (date == new Date()) {
+                        Notification n = new Notification.Builder(getApplicationContext())
+                                .setContentTitle("Cinema App: A movie you followed has been released")
+                                .setContentText(m.getTitle())
+                                .setSmallIcon(R.drawable.logo)
+                                .build();
+                        NotificationManager mNotificationManager =
+                                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                        mNotificationManager.notify(m.getId(), n);
+
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

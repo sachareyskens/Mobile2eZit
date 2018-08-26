@@ -37,7 +37,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="15dp"
-        android:backgroundTint="@android:color/holo_orange_dark"
+        android:background="@drawable/mybutton"
         android:onClick="goToTopMovies"
         android:text="@string/button_top_movies" />
 
@@ -52,7 +52,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="15dp"
-        android:backgroundTint="@android:color/holo_orange_dark"
+        android:background="@drawable/mybutton"
         android:onClick="goToSearch"
         android:text="@string/button_search" />
 
@@ -67,7 +67,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="15dp"
-        android:backgroundTint="@android:color/holo_orange_dark"
+        android:background="@drawable/mybutton"
         android:onClick="goToUpcoming"
         android:text="@string/button_upcoming" />
 
@@ -82,7 +82,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="15dp"
-        android:backgroundTint="@android:color/holo_orange_dark"
+        android:background="@drawable/mybutton"
         android:onClick="goToSettings"
         android:text="@string/button_settings" />
 
@@ -97,7 +97,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="15dp"
-        android:backgroundTint="@android:color/holo_orange_dark"
+        android:background="@drawable/mybutton"
         android:onClick="goToFollowed"
         android:text="Following Movies" />
 
